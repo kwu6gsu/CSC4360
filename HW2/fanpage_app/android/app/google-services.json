@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "841273482378",
+    "project_id": "fanpage-app-d4156",
+    "storage_bucket": "fanpage-app-d4156.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:841273482378:android:31558beac72ba610a3e173",
+        "android_client_info": {
+          "package_name": "com.example.fanpage_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "841273482378-p1kk9fn8va8mjc1t95k2jgknvhdb3ko1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.fanpage_app",
+            "certificate_hash": "572cf2c8a4b002df4c568d42c2299f7103c238b8"
+          }
+        },
+        {
+          "client_id": "841273482378-6rspdf2k5511vpcr6u6jou8cn4gt2cad.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsOgvYd2NL-2h5bfNvEq0zlitRKX4doMc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "841273482378-6rspdf2k5511vpcr6u6jou8cn4gt2cad.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
