@@ -20,6 +20,16 @@ class _EmailSignUpState extends State<EmailSignUp> {
   TextEditingController lastNameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
+  Future<void> addUser() {
+    return userCollection.add({
+      'uid': firebaseAuth.currentUser!.uid,
+      'first_name': firstNameController.text,
+      'last_name': lastNameController.text,
+      'role': 'customer',
+      'registration_datetime': firebaseAuth.currentUser!.metadata.creationTime
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -136,6 +146,7 @@ class _EmailSignUpState extends State<EmailSignUp> {
         .createUserWithEmailAndPassword(
             email: emailController.text, password: passwordController.text)
         .then((result) {
+      addUser();
       isLoading = false;
       Navigator.pushReplacement(
         context,
