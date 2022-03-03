@@ -92,4 +92,5 @@ flutter:
   # see https://flutter.dev/custom-fonts/#from-packages
 
 flutter_native_splash:
+  color: "#148c8b"
   image: assets/images/me.png
