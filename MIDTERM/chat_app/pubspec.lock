@@ -132,6 +132,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.4"
+  flutter_signin_button:
+    dependency: "direct main"
+    description:
+      name: flutter_signin_button
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -142,27 +149,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  google_sign_in:
-    dependency: "direct main"
-    description:
-      name: google_sign_in
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "5.2.4"
-  google_sign_in_platform_interface:
+  font_awesome_flutter:
     dependency: transitive
     description:
-      name: google_sign_in_platform_interface
+      name: font_awesome_flutter
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.2"
-  google_sign_in_web:
-    dependency: transitive
-    description:
-      name: google_sign_in_web
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.10.0+5"
+    version: "9.2.0"
   http_parser:
     dependency: transitive
     description:
@@ -198,6 +191,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.12.11"
+  material_color_utilities:
+    dependency: transitive
+    description:
+      name: material_color_utilities
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.3"
   meta:
     dependency: transitive
     description:
@@ -219,13 +219,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.2"
-  quiver:
-    dependency: transitive
-    description:
-      name: quiver
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.0.1+1"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -272,7 +265,7 @@ packages:
       name: test_api
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.3"
+    version: "0.4.8"
   typed_data:
     dependency: transitive
     description:
@@ -289,4 +282,4 @@ packages:
     version: "2.1.1"
 sdks:
   dart: ">=2.15.1 <3.0.0"
-  flutter: ">=2.5.0"
+  flutter: ">=1.12.13+hotfix.5"
