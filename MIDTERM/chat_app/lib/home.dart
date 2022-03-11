@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import 'signup.dart';
+import 'search.dart';
 
 class Home extends StatefulWidget {
   Home({this.uid});
@@ -70,7 +71,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Home"),
+        title: Text("Messages"),
         automaticallyImplyLeading: false,
         actions: <Widget>[
           IconButton(
@@ -90,13 +91,12 @@ class _HomeState extends State<Home> {
           )
         ],
       ),
-      body: Center(
-        child: TextButton(
-          child: Text("+"),
-          onPressed: () {
-            _displayTextInputDialog(context);
-          },
-        ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.search),
+        onPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => SearchScreen()));
+        },
       ),
     );
   }
