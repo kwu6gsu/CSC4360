@@ -1,6 +1,9 @@
+import 'package:chat_app/chat.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import 'chat.dart';
 
 class SearchScreen extends StatefulWidget {
   @override
@@ -81,7 +84,23 @@ class _SearchScreenState extends State<SearchScreen> {
                             " " +
                             searchResult[index]['last_name']),
                         trailing: IconButton(
-                            onPressed: () {}, icon: Icon(Icons.message)),
+                            onPressed: () {
+                              setState(() {
+                                searchController.text = "";
+                              });
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => ChatScreen(
+                                          contact_id: searchResult[index]
+                                              ['uid'],
+                                          contact_name: searchResult[index]
+                                                  ['first_name'] +
+                                              " " +
+                                              searchResult[index]
+                                                  ['last_name'])));
+                            },
+                            icon: Icon(Icons.message)),
                       );
                     }))
           else if (isLoading)
