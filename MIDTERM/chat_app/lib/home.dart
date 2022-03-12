@@ -52,7 +52,54 @@ class _HomeState extends State<Home> {
           )
         ],
       ),
-      body: Container(),
+      body: Column(
+        children: [
+          Expanded(
+              child: Container(
+            padding: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(25),
+                    topRight: Radius.circular(25))),
+            child: StreamBuilder<QuerySnapshot>(
+              stream: FirebaseFirestore.instance
+                  .collection('users')
+                  .doc(firebaseAuth.currentUser!.uid)
+                  .collection('conversations')
+                  .snapshots(),
+              builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                if (snapshot.hasData) {
+                  if (snapshot.requireData.size < 1) {
+                    return Center(
+                      child: Text("Search to start a conversation!"),
+                    );
+                  }
+                  return ListView.builder(
+                      itemCount: snapshot.requireData.size,
+                      physics: BouncingScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        return ListTile(
+                          title: Text(
+                              snapshot.requireData.docs[index]['last_message']),
+                          trailing: IconButton(
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => ChatScreen(
+                                            contact_id: '', contact_name: '')));
+                              },
+                              icon: Icon(Icons.message)),
+                        );
+                      });
+                }
+                return Center(child: CircularProgressIndicator());
+              },
+            ),
+          )),
+        ],
+      ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.search),
         onPressed: () {
