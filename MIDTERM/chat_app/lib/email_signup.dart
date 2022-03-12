@@ -21,7 +21,7 @@ class _EmailSignUpState extends State<EmailSignUp> {
   TextEditingController passwordController = TextEditingController();
 
   Future<void> addUser() {
-    return userCollection.add({
+    return userCollection.doc(firebaseAuth.currentUser!.uid).set({
       'uid': firebaseAuth.currentUser!.uid,
       'first_name': firstNameController.text,
       'last_name': lastNameController.text,

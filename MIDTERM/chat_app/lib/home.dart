@@ -4,76 +4,37 @@ import 'package:flutter/material.dart';
 
 import 'signup.dart';
 import 'search.dart';
+import 'chat.dart';
+import 'profile.dart';
 
 class Home extends StatefulWidget {
-  Home({this.uid});
   final String? uid;
+
+  Home({this.uid});
 
   @override
   _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-  late String codeDialog;
-  late String valueText;
-  TextEditingController _textFieldController = TextEditingController();
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-  final CollectionReference messageCollection =
-      FirebaseFirestore.instance.collection('messages');
-
-  Future<void> addMessage() {
-    return messageCollection.add({
-      'uid': firebaseAuth.currentUser!.uid,
-      'context': _textFieldController.text,
-      'datetime': firebaseAuth.currentUser!.metadata.creationTime
-    });
-  }
-
-  Future<void> _displayTextInputDialog(BuildContext context) async {
-    return showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: Text("Enter Message"),
-            content: TextField(
-              onChanged: (value) {
-                setState(() {
-                  valueText = value;
-                });
-              },
-              controller: _textFieldController,
-            ),
-            actions: <Widget>[
-              TextButton(
-                child: Text('CANCEL'),
-                onPressed: () {
-                  setState(() {
-                    Navigator.pop(context);
-                  });
-                },
-              ),
-              TextButton(
-                child: Text('POST'),
-                onPressed: () {
-                  setState(() {
-                    codeDialog = valueText;
-                    Navigator.pop(context);
-                  });
-                  addMessage();
-                },
-              ),
-            ],
-          );
-        });
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Messages"),
+        title: Text("Conversations"),
         automaticallyImplyLeading: false,
         actions: <Widget>[
+          IconButton(
+              icon: Icon(Icons.account_box_outlined, color: Colors.white),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            ProfileScreen(uid: firebaseAuth.currentUser!.uid)));
+              }),
           IconButton(
             icon: Icon(
               Icons.exit_to_app,
@@ -91,6 +52,7 @@ class _HomeState extends State<Home> {
           )
         ],
       ),
+      body: Container(),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.search),
         onPressed: () {
